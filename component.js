@@ -67,12 +67,12 @@ var parseReact = function (filePath, doclet) {
       throw error
     }
   }
-  
+
   return {
     props: Object.entries(docGen.props || {}).map(([key, prop]) => ({
       name: key,
       description: prop.description,
-      type: prop.type ? prop.type.name : prop.flowType.name,
+      type: prop.type ? prop.type.name : prop.flowType?.name,
       required: typeof prop.required === 'boolean' && prop.required,
       defaultValue: prop.defaultValue
         ? (prop.defaultValue.computed ? 'function()' : prop.defaultValue.value)
